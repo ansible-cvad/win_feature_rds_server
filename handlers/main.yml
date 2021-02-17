@@ -2,4 +2,3 @@
   - name: Reboot Machine
     win_reboot:
       pre_reboot_delay: 10
-    when: win_feature.reboot_required

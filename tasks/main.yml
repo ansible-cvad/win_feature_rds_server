@@ -3,5 +3,4 @@
     win_feature:
       name: "RDS-RD-SERVER"
       state: "{{ win_feature_rds_server_state }}"
-    register: win_feature
     notify: Reboot Machine
