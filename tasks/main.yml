@@ -4,6 +4,9 @@
       name: "RDS-RD-SERVER"
       state: "{{ win_feature_rds_server_state }}"
     notify: Reboot Machine
+    register: win_feature
 
-  - name: Flush Handlers
-    meta: flush_handlers
+  - name: Reboot the machine
+    win_reboot:
+      pre_reboot_delay: 10
+    when: win_feature.reboot_required
