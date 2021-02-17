@@ -3,9 +3,12 @@
     win_feature:
       name: "RDS-RD-SERVER"
       state: "{{ win_feature_rds_server_state }}"
-    register: win_feature
+    # register: win_feature
+    notify: Reboot After RDS Server Installation
+  # - name: Reboot the machine
+  #   win_reboot:
+  #     pre_reboot_delay: 10
+  #   when: win_feature.reboot_required
 
-  - name: Reboot the machine
-    win_reboot:
-      pre_reboot_delay: 10
-    when: win_feature.reboot_required
+  - name: Flush Handlers
+    meta: flush_handlers
